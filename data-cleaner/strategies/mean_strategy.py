@@ -35,3 +35,15 @@ class DropNullsStrategy(MissingValueStrategy):
         if columns:
             return df_copy.dropna(subset=columns)
         return df_copy.dropna()
+
+class ModeImputationStrategy(MissingValueStrategy):
+    """Estrategia 4: Imputa nulos usando la moda (Ideal para atributos categóricos o cualitativos)."""
+    def clean(self, df: pd.DataFrame, columns: Optional[List[str]] = None) -> pd.DataFrame:
+        df_copy = df.copy()
+        target_cols = columns if columns else df_copy.columns
+        
+        for col in target_cols:
+            if not df_copy[col].mode().empty:
+                mode_val = df_copy[col].mode()[0]
+                df_copy[col] = df_copy[col].fillna(mode_val)
+        return df_copy
