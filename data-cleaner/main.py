@@ -14,6 +14,8 @@ def show_menu():
     print("2. Reemplazar con la media")
     print("3. Reemplazar con la mediana")
     print("4. Reemplazar con un valor personalizado")
+    print("5. Salir")
+
 
 def main():
     """
@@ -24,39 +26,47 @@ def main():
     print("Datos originales:")
     print(data)
 
-    show_menu()
+    while True:
+        show_menu()
 
-    option = input(
-        "\nSeleccione una estrategia: "
-    ).strip()
+        option = input("\nSeleccione una opción: ").strip()
 
-    if option == "1":
-        strategy = DropMissingStrategy()
+        if option == "1":
+            strategy = DropMissingStrategy()
 
-    elif option == "2":
-        strategy = MeanStrategy()
+        elif option == "2":
+            strategy = MeanStrategy()
 
-    elif option == "3":
-        strategy = MedianStrategy()
+        elif option == "3":
+            strategy = MedianStrategy()
 
-    elif option == "4":
-        try:
-            custom_value = float(input("Ingrese el valor con el que se reemplazarán los valores faltantes: "))
-            strategy = CustomValueStrategy(custom_value)
-        except ValueError:
-            print("Por favor, ingrese un número válido.")
+        elif option == "4":
+            try:
+                custom_value = float(
+                    input(
+                        "Ingrese el valor con el que se reemplazarán "
+                        "los valores faltantes: "
+                    )
+                )
+                strategy = CustomValueStrategy(custom_value)
+
+            except ValueError:
+                print("Por favor, ingrese un número válido.")
+                continue
+
+        elif option == "5":
+            print("\nSaliendo del programa...")
             return
 
-    else:
-        print("Opción no válida.")
-        return
+        else:
+            print("Opción no válida.")
+            continue
 
-    cleaner = DataCleaner(strategy)
+        cleaner = DataCleaner(strategy)
+        result = cleaner.clean(data)
 
-    result = cleaner.clean(data)
-
-    print("\nDatos procesados:")
-    print(result)
+        print("\nDatos procesados:")
+        print(result)
 
 
 if __name__ == "__main__":

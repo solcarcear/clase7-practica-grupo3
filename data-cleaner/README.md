@@ -58,3 +58,11 @@ python main.py
 ```
 
 Al ejecutar el programa se mostrará un menú para seleccionar la estrategia de limpieza que se desea utilizar.
+
+## Integrantes
+
+Enrique Arce
+EDGAR POLANCO OCHOA
+CARLOS ALBERTO ARCE ORTUÑO
+Silvia Huarachi Jaldin
+TELASSIM GINNOLA TELASSIM GINNOLA
