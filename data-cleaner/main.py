@@ -2,6 +2,7 @@ from data_cleaner import DataCleaner
 from strategies.drop_missing_strategy import DropMissingStrategy
 from strategies.mean_strategy import MeanStrategy
 from strategies.median_strategy import MedianStrategy
+from strategies.custom_value_strategy import CustomValueStrategy
 
 
 def show_menu():
@@ -12,7 +13,7 @@ def show_menu():
     print("1. Eliminar valores faltantes")
     print("2. Reemplazar con la media")
     print("3. Reemplazar con la mediana")
-
+    print("4. Reemplazar con un valor personalizado")
 
 def main():
     """
@@ -37,6 +38,14 @@ def main():
 
     elif option == "3":
         strategy = MedianStrategy()
+
+    elif option == "4":
+        try:
+            custom_value = float(input("Ingrese el valor con el que se reemplazarán los valores faltantes: "))
+            strategy = CustomValueStrategy(custom_value)
+        except ValueError:
+            print("Por favor, ingrese un número válido.")
+            return
 
     else:
         print("Opción no válida.")
