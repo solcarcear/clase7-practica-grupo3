@@ -12,6 +12,7 @@ def show_menu():
     print("1. Eliminar valores faltantes")
     print("2. Reemplazar con la media")
     print("3. Reemplazar con la mediana")
+    print("4. Salir")
 
 
 def main():
@@ -23,32 +24,35 @@ def main():
     print("Datos originales:")
     print(data)
 
-    show_menu()
+    while True:
+        show_menu()
 
-    option = input(
-        "\nSeleccione una estrategia: "
-    ).strip()
+        option = input("\nSeleccione una opción: ").strip()
 
-    if option == "1":
-        strategy = DropMissingStrategy()
+        if option == "1":
+            strategy = DropMissingStrategy()
 
-    elif option == "2":
-        strategy = MeanStrategy()
+        elif option == "2":
+            strategy = MeanStrategy()
 
-    elif option == "3":
-        strategy = MedianStrategy()
+        elif option == "3":
+            strategy = MedianStrategy()
 
-    else:
-        print("Opción no válida.")
-        return
+        elif option == "4":
+            print("\nSaliendo del programa...")
+            return
 
-    cleaner = DataCleaner(strategy)
+        else:
+            print("\nOpción no válida.")
+            continue
 
-    result = cleaner.clean(data)
+        cleaner = DataCleaner(strategy)
+        result = cleaner.clean(data)
 
-    print("\nDatos procesados:")
-    print(result)
+        print("\nDatos procesados:")
+        print(result)
 
 
 if __name__ == "__main__":
     main()
+
