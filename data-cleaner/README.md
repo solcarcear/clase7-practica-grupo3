@@ -26,7 +26,7 @@ Elegimos el patrón **Strategy** porque tenemos distintas formas de realizar una
 
 Cada estrategia tiene su propia implementación y puede cambiarse sin modificar la lógica principal de la aplicación. También permite agregar nuevas formas de limpieza más adelante sin afectar las estrategias existentes.
 
-## Estructura
+## Estructura del Proyecto
 
 ```text
 data_cleaner/
@@ -41,6 +41,8 @@ data_cleaner/
     ├── drop_missing_strategy.py
     ├── mean_strategy.py
     └── median_strategy.py
+└── docs/
+    ├── modelo_clases.jpg
 ```
 
 ## Instalación
